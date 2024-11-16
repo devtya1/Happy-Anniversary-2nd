@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Surprise for Tinni</title>
+    <style>
+        /* Body Style */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ff3366, #ff6699); /* Smooth gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        /* Image Container for Vertical Layout */
+        .image-container {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            max-width: 600px;  /* Adjusted for portrait orientation */
+            max-height: 900px; /* Adjusted for portrait orientation */
+            overflow: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Image Style - Ensure full fit with portrait aspect */
+        .image-container img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center; /* Default positioning */
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
+        }
+
+        /* Adjusted positioning for image4 and image5 */
+        .image-container img[src="image4.jpeg"],
+        .image-container img[src="image5.jpeg"] {
+            object-position: center top; /* Bring the face slightly down */
+        }
+
+        /* Button Style */
+        .next-button {
+            padding: 15px 30px;
+            background-color: #FF3366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px; /* Adds space above the button */
+            z-index: 10; /* Keeps the button above other elements */
+        }
+
+        /* Button Hover Effect */
+        .next-button:hover {
+            background-color: #ff6699;
+        }
+    </style>
+</head>
+<body onload="btn.click()">
+    <div class="image-container" id="image-container">
+        <img src="image1.jpeg" alt="Image 1" class="image-slide">
+        <img src="image2.jpeg" alt="Image 2" class="image-slide">
+        <img src="image3.jpeg" alt="Image 3" class="image-slide">
+        <img src="image4.jpeg" alt="Image 4" class="image-slide">
+        <img src="image5.jpeg" alt="Image 5" class="image-slide">
+    </div>
+
+    <!-- Buttons -->
+    <button class="next-button" onclick="window.location='secondPage.html'">Next</button>
+    <button class="next-button" id="playButton" onclick="playAudioAndGoToNext();">Play</button>
+
+    <!-- Audio Player -->
+    <audio id="background-music" src="sound.mp3" preload="auto"></audio>
+
+    <script>
+        btn = document.getElementById("playButton");
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.image-slide');
+        const audioElement = document.getElementById('background-music');
+
+        // Function to change images every 3 seconds
+        function changeImage() {
+            images.forEach(img => img.style.opacity = 0); // Hide all images
+            images[currentIndex].style.opacity = 1; // Show current image
+            currentIndex = (currentIndex + 1) % images.length; // Loop through images
+        }
+
+        // Change image every 3 seconds
+        setInterval(changeImage, 3000);
+        changeImage(); // Initialize first image
+
+        function playAudioAndGoToNext() {
+            audioElement.currentTime = 177; // Start playback from 2:57
+            audioElement.play().then(() => {
+                btn.style.display = "none";
+                console.log("I Love You Tinni!");
+            }).catch(error => {
+                console.error('Error playing audio:', error);
+            });
+        }
+    </script>
+</body>
+</html>

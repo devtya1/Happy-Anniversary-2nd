@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary Princess</title>
+    <style>
+        /* Body Style */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ff4d88, #ff99bb, #ff3366);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Cursive', sans-serif;
+            position: relative;
+        }
+
+        /* Hidden Message Container */
+        .hidden-message {
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Glowing Text */
+        h1 {
+            font-size: 4rem;
+            color: #ffffff;
+            text-shadow: 
+                0 0 10px #ff99cc,
+                0 0 20px #ff66b3,
+                0 0 30px #ff3380,
+                0 0 40px #ff1a66,
+                0 0 50px #ff0055;
+            animation: glow 2s infinite alternate;
+            text-align: center;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 
+                    0 0 5px #ff99cc,
+                    0 0 10px #ff66b3,
+                    0 0 20px #ff3380,
+                    0 0 30px #ff1a66,
+                    0 0 40px #ff0055;
+            }
+            100% {
+                text-shadow: 
+                    0 0 20px #ff99cc,
+                    0 0 30px #ff66b3,
+                    0 0 40px #ff3380,
+                    0 0 50px #ff1a66,
+                    0 0 60px #ff0055;
+            }
+        }
+
+        /* Floating Heart Effect */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff3366;
+            clip-path: polygon(50% 0%, 0% 35%, 50% 100%, 100% 35%);
+            animation: float-hearts 5s infinite ease-in-out;
+        }
+
+        .heart:nth-child(2) {
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(3) {
+            left: 40%;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(4) {
+            left: 60%;
+            animation-delay: 3s;
+        }
+
+        .heart:nth-child(5) {
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float-hearts {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-200px) scale(1.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-400px) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* Love Message Text */
+        .message {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 5px #ff99cc, 0 0 10px #ff66b3;
+            text-align: center;
+        }
+
+        /* Reveal Button */
+        .reveal-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .reveal-button:hover {
+            background-color: #ff6699;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Reveal Button -->
+    <button class="reveal-button" onclick="revealSurprise()">Reveal the Surprise!</button>
+
+    <!-- Hidden Content -->
+    <div class="hidden-message" id="hiddenMessage">
+        <!-- Glowing Message -->
+        <h1>Happy Anniversary, Princess!</h1>
+
+        <!-- Love Message -->
+        <div class="message">
+            I love you more than words can ever express! <br>
+            You are my everything, baccha. ❤️
+        </div>
+
+        <!-- Floating Hearts -->
+        <div class="heart" style="left: 10%;"></div>
+        <div class="heart" style="left: 30%;"></div>
+        <div class="heart" style="left: 50%;"></div>
+        <div class="heart" style="left: 70%;"></div>
+        <div class="heart" style="left: 90%;"></div>
+    </div>
+
+    <script>
+        // Function to reveal the surprise
+        function revealSurprise() {
+            document.querySelector('.reveal-button').style.display = 'none'; // Hide the button
+            document.getElementById('hiddenMessage').style.display = 'flex'; // Show the hidden content
+        }
+    </script>
+</body>
+</html>

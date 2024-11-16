@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message for Tinni</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #ff9ff3, #feca57);
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff6b81, #ffcccb);
+      animation: bgAnimation 8s infinite alternate ease-in-out;
+      z-index: -2;
+    }
+
+    @keyframes bgAnimation {
+      0% {
+        background: linear-gradient(135deg, #ff6b81, #ffcccb);
+      }
+      50% {
+        background: linear-gradient(135deg, #ff9ff3, #ff7e5f);
+      }
+      100% {
+        background: linear-gradient(135deg, #ff6492, #feb47b);
+      }
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff6b81;
+      opacity: 0.6;
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 70%, 18% 100%, 0% 38%);
+      animation: floatHearts 8s infinite ease-in-out;
+    }
+
+    .heart:nth-child(1) {
+      left: 20%;
+      animation-duration: 7s;
+      animation-delay: 0s;
+    }
+
+    .heart:nth-child(2) {
+      left: 40%;
+      animation-duration: 6s;
+      animation-delay: 1s;
+    }
+
+    .heart:nth-child(3) {
+      left: 60%;
+      animation-duration: 9s;
+      animation-delay: 2s;
+    }
+
+    .heart:nth-child(4) {
+      left: 80%;
+      animation-duration: 5s;
+      animation-delay: 3s;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translateY(-300px) scale(0.8);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-700px) scale(0.4);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      padding: 30px;
+      width: 80%;
+      max-width: 800px;
+      height: 80%;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+      transform: translateX(100%);
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    h1 {
+      font-size: 30px;
+      color: #ff6492;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .speech {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+      padding: 20px;
+      background: linear-gradient(45deg, #ff7e5f, #feb47b);
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff6492;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .button:hover {
+      background-color: #ff3c6d;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="hearts">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+  </div>
+
+  <div class="container">
+    <h1>My Beloved Princess</h1>
+    <div class="speech">
+      My Beloved Princess Tinni, <br><br>
+      I’m sitting here, thinking about all the moments we’ve shared—the laughter, the joy, and, yes, the arguments. And as I think about those arguments, my heart aches because I know I’ve caused you pain. I’ve hurt you in ways that I never should have, and I want you to know that I am deeply sorry for all the times I made you feel small, upset, or unloved. <br><br>
+      You are the most important person in my life, and the last thing I ever want to do is hurt you. But sometimes, in the heat of the moment, I lose sight of that. I get so caught up in my own frustration or pride that I forget the love that binds us, the love that should always guide me. And when I hurt you, it’s like a part of me breaks, because you mean more to me than anything in this world. <br><br>
+      I know I’ve made mistakes—more than I’d like to admit—and each one weighs on my heart. For every time I failed to be patient, for every moment I let anger take over, for every word I said that I should’ve never spoken, I am truly, deeply sorry. <br><br>
+      You are my everything, my princess, my baccha, and I love you more than words could ever express. <br><br>
+      Forever and always, <br>      Your laddu
+    </div>
+    <button class="button" onclick="window.location.href='finalPage.html'">Next</button>
+  </div>
+</body>
+</html>
