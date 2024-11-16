@@ -29,15 +29,14 @@
 
         /* Glowing Text */
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: #ffffff;
             text-shadow: 
-                0 0 10px #ff99cc,
-                0 0 20px #ff66b3,
-                0 0 30px #ff3380,
-                0 0 40px #ff1a66,
-                0 0 50px #ff0055;
-            animation: glow 2s infinite alternate;
+                0 0 8px #ff99cc,
+                0 0 16px #ff66b3,
+                0 0 24px #ff3380,
+                0 0 32px #ff1a66;
+            animation: glow 1.5s infinite alternate ease-in-out;
             text-align: center;
         }
 
@@ -46,69 +45,22 @@
                 text-shadow: 
                     0 0 5px #ff99cc,
                     0 0 10px #ff66b3,
-                    0 0 20px #ff3380,
-                    0 0 30px #ff1a66,
-                    0 0 40px #ff0055;
+                    0 0 15px #ff3380,
+                    0 0 20px #ff1a66;
             }
             100% {
                 text-shadow: 
-                    0 0 20px #ff99cc,
-                    0 0 30px #ff66b3,
-                    0 0 40px #ff3380,
-                    0 0 50px #ff1a66,
-                    0 0 60px #ff0055;
-            }
-        }
-
-        /* Floating Heart Effect */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff3366;
-            clip-path: polygon(50% 0%, 0% 35%, 50% 100%, 100% 35%);
-            animation: float-hearts 5s infinite ease-in-out;
-        }
-
-        .heart:nth-child(2) {
-            left: 20%;
-            animation-delay: 1s;
-        }
-
-        .heart:nth-child(3) {
-            left: 40%;
-            animation-delay: 2s;
-        }
-
-        .heart:nth-child(4) {
-            left: 60%;
-            animation-delay: 3s;
-        }
-
-        .heart:nth-child(5) {
-            left: 80%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float-hearts {
-            0% {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-200px) scale(1.5);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-400px) scale(0.8);
-                opacity: 0;
+                    0 0 15px #ff99cc,
+                    0 0 20px #ff66b3,
+                    0 0 25px #ff3380,
+                    0 0 30px #ff1a66;
             }
         }
 
         /* Love Message Text */
         .message {
             margin-top: 20px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #ffffff;
             text-shadow: 0 0 5px #ff99cc, 0 0 10px #ff66b3;
             text-align: center;
@@ -116,20 +68,64 @@
 
         /* Reveal Button */
         .reveal-button {
-            padding: 15px 30px;
+            padding: 10px 20px;
             font-size: 1.2rem;
             background-color: #ff3366;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease-in-out;
         }
 
         .reveal-button:hover {
             background-color: #ff6699;
         }
 
+        /* Expanding Heart at the Bottom */
+        .bottom-heart {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: #ff3366;
+            transform: rotate(-45deg);
+            animation: expand-contract 1.5s infinite ease-in-out;
+        }
+
+        .bottom-heart::before,
+        .bottom-heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ff3366;
+            border-radius: 50%;
+        }
+
+        .bottom-heart::before {
+            top: -25px;
+            left: 0;
+        }
+
+        .bottom-heart::after {
+            top: 0;
+            left: -25px;
+        }
+
+        @keyframes expand-contract {
+            0% {
+                transform: translateX(-50%) rotate(45deg) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) rotate(45deg) scale(1.2);
+            }
+            100% {
+                transform: translateX(-50%) rotate(45deg) scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -146,18 +142,15 @@
             I love you more than words can ever express! <br>
             You are my everything, baccha. ❤️
         </div>
-
-        <!-- Floating Hearts -->
-        <div class="heart" style="left: 10%;"></div>
-        <div class="heart" style="left: 30%;"></div>
-        <div class="heart" style="left: 50%;"></div>
-        <div class="heart" style="left: 70%;"></div>
-        <div class="heart" style="left: 90%;"></div>
     </div>
+
+    <!-- Expanding Heart at the Bottom -->
+    <div id="heart" class="bottom-heart" style="display: none;"></div>
 
     <script>
         // Function to reveal the surprise
         function revealSurprise() {
+            document.getElementById("heart").style.display = "block";
             document.querySelector('.reveal-button').style.display = 'none'; // Hide the button
             document.getElementById('hiddenMessage').style.display = 'flex'; // Show the hidden content
         }
