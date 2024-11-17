@@ -94,17 +94,21 @@
         const images = document.querySelectorAll('.image-slide');
         const audioElement = document.getElementById('background-music');
 
+        function changeImage(){
+            images.forEach(img => img.style.opacity = 0); // Hide all images
+            images[currentIndex].style.opacity = 1; // Show current image
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
         // Change image every 3 seconds
-        setInterval(changeImage, 3000);
-        changeImage(); // Initialize first image
+        // Initialize first image
 
         function playAudioAndGoToNext() {
             document.getElementById("nextButton").style.display = "block";
             audioElement.currentTime = 178.5; // Start playback from 2:57
             audioElement.play().then(() => {
-                images.forEach(img => img.style.opacity = 0); // Hide all images
-            images[currentIndex].style.opacity = 1; // Show current image
-            currentIndex = (currentIndex + 1) % images.length;
+                setInterval(changeImage, 3000);
+                changeImage(); 
                 btn.style.display = "none";
                 console.log("I Love You Tinni!");
             }).catch(error => {
