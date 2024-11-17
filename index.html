@@ -82,7 +82,7 @@
     </div>
 
     <!-- Buttons -->
-    <button class="next-button" onclick="window.location='secondPage.html'">Next</button>
+    <button class="next-button" style="display: none;" id="nextButton" onclick="window.location='secondPage.html'">Next</button>
     <button class="next-button" id="playButton" onclick="playAudioAndGoToNext();">Play</button>
 
     <!-- Audio Player -->
@@ -94,20 +94,17 @@
         const images = document.querySelectorAll('.image-slide');
         const audioElement = document.getElementById('background-music');
 
-        // Function to change images every 3 seconds
-        function changeImage() {
-            images.forEach(img => img.style.opacity = 0); // Hide all images
-            images[currentIndex].style.opacity = 1; // Show current image
-            currentIndex = (currentIndex + 1) % images.length; // Loop through images
-        }
-
         // Change image every 3 seconds
         setInterval(changeImage, 3000);
         changeImage(); // Initialize first image
 
         function playAudioAndGoToNext() {
-            audioElement.currentTime = 177; // Start playback from 2:57
+            document.getElementById("nextButton").style.display = "block";
+            audioElement.currentTime = 178.5; // Start playback from 2:57
             audioElement.play().then(() => {
+                images.forEach(img => img.style.opacity = 0); // Hide all images
+            images[currentIndex].style.opacity = 1; // Show current image
+            currentIndex = (currentIndex + 1) % images.length;
                 btn.style.display = "none";
                 console.log("I Love You Tinni!");
             }).catch(error => {
